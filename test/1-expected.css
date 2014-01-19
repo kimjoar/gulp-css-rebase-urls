@@ -1,0 +1,11 @@
+.something {
+  background: url("img/lol.jpg") no-repeat top left;
+}
+
+.with-external {
+  background: url("css/http:/example.com/test.jpg") no-repeat top left;
+}
+
+.with-absolute {
+  background: url("css/Users/kimjoar/dev/gulp-css-img-path/img/lol.jpg") no-repeat top left;
+}
