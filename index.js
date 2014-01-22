@@ -16,7 +16,13 @@ var rebaseUrls = function(css, options) {
                 return url;
             }
             var absolutePath = path.join(options.currentDir, url)
-            return path.relative(options.root, absolutePath);
+            var p = path.relative(options.root, absolutePath);
+
+            if (process.platform === 'win32') {
+                p = p.replace(/\\/g, '/');
+            }
+
+            return p;
         }))
         .toString()
 }
