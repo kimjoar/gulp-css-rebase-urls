@@ -1,6 +1,6 @@
-var es = require('event-stream');
 var rework = require('rework');
 var path = require('path');
+var through = require('through2');
 var validator = require('validator');
 
 var isAbsolute = function(p) {
@@ -31,7 +31,7 @@ module.exports = function(options) {
     options = options || {};
     var root = options.root || '.';
 
-    return es.map(function(file, cb) {
+    return through.obj(function(file, enc, cb) {
         var css = rebaseUrls(file.contents.toString(), {
             currentDir: path.dirname(file.path),
             root: path.join(file.cwd, root)
@@ -39,6 +39,7 @@ module.exports = function(options) {
 
         file.contents = new Buffer(css);
 
-        cb(null, file);
+        this.push(file);
+        cb();
     });
 }
