@@ -7,7 +7,7 @@ var isAbsolute = function(p) {
     var normal = path.normalize(p);
     var absolute = path.resolve(p);
     return normal == absolute;
-}
+};
 
 var rebaseUrls = function(css, options) {
     return rework(css)
@@ -24,8 +24,8 @@ var rebaseUrls = function(css, options) {
 
             return p;
         }))
-        .toString()
-}
+        .toString();
+};
 
 module.exports = function(options) {
     options = options || {};
@@ -42,4 +42,4 @@ module.exports = function(options) {
         this.push(file);
         cb();
     });
-}
+};
