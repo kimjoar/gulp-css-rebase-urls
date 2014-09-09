@@ -21,7 +21,9 @@ var rebaseUrls = function(css, options) {
             if (process.platform === 'win32') {
                 p = p.replace(/\\/g, '/');
             }
-
+            if (options.convertToAbsolute) {
+                p = "/" + p;
+            }
             return p;
         }))
         .toString();
@@ -30,11 +32,13 @@ var rebaseUrls = function(css, options) {
 module.exports = function(options) {
     options = options || {};
     var root = options.root || '.';
+    var convertToAbsolute = options.convertToAbsolute || false;
 
     return through.obj(function(file, enc, cb) {
         var css = rebaseUrls(file.contents.toString(), {
             currentDir: path.dirname(file.path),
-            root: path.join(file.cwd, root)
+            root: path.join(file.cwd, root),
+            convertToAbsolute: convertToAbsolute
         });
 
         file.contents = new Buffer(css);
