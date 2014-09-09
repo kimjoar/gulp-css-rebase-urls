@@ -76,7 +76,7 @@ production. I want this final file for the css above:
 
 ## Using the 'convertToAbsolute' option
 
-This option will prefix the rebased relative URL with a forward slash to convert it into an absolute path. This is to accomodate situations where the CSS files are being transferred into another directory (such as a temp directory for generated files) but the images aren't being relocated.
+This option will prefix the rebased relative URL with a forward slash to convert it into an absolute path. This is to accommodate situations where the CSS files are being transferred into another directory (such as a temp directory for generated files) but the images aren't being relocated.
 
 By default the option is turned off.
 
