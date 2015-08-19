@@ -1,6 +1,6 @@
 {
   "name": "gulp-css-rebase-urls",
-  "version": "0.0.6",
+  "version": "0.0.5",
   "description": "Rebase relative image URLs",
   "main": "index.js",
   "dependencies": {
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yolo2013/gulp-css-rebase-urls"
+    "url": "git://github.com/kjbekkelund/gulp-css-rebase-urls.git"
   },
   "keywords": [
     "gulpplugin",
