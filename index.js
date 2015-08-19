@@ -16,7 +16,7 @@ var rebaseUrls = function(css, options) {
                 return url;
             }
             var absolutePath = path.join(options.currentDir, url)
-            var p = path.relative(options.root, absolutePath);
+            var p = options.extenalPath + path.relative(options.root, absolutePath);
 
             if (process.platform === 'win32') {
                 p = p.replace(/\\/g, '/');
@@ -30,11 +30,14 @@ var rebaseUrls = function(css, options) {
 module.exports = function(options) {
     options = options || {};
     var root = options.root || '.';
+    // the external head path, something like '../../'
+    var extenalPath = optionsextenalPath || '';
 
     return through.obj(function(file, enc, cb) {
         var css = rebaseUrls(file.contents.toString(), {
             currentDir: path.dirname(file.path),
-            root: path.join(file.cwd, root)
+            root: path.join(file.cwd, root),
+            extenalPath: extenalPath
         });
 
         file.contents = new Buffer(css);
