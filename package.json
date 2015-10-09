@@ -4,7 +4,8 @@
   "description": "Rebase relative image URLs",
   "main": "index.js",
   "dependencies": {
-    "rework": "~0.20.2",
+    "rework": "^1.0.1",
+    "rework-plugin-url": "^1.0.1",
     "validator": "~3.1.0",
     "through2": "~0.4.0"
   },
