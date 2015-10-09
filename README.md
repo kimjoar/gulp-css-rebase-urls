@@ -1,3 +1,5 @@
+# THIS REPO IS OUT OF DATE. IF YOU WANT TO MAINTAIN IT, PLEASE CONTACT ME VIA EMAIL.
+
 # [gulp](https://github.com/wearefractal/gulp)-css-rebase-urls
 
 > Rebase relative image URLs 
