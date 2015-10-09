@@ -4,6 +4,7 @@
   "description": "Rebase relative image URLs",
   "main": "index.js",
   "dependencies": {
+    "gulp-util": "~2.2.13",
     "rework": "~0.20.2",
     "validator": "~3.1.0",
     "through2": "~0.4.0"

@@ -2,6 +2,7 @@ var rework = require('rework');
 var path = require('path');
 var through = require('through2');
 var validator = require('validator');
+var gutil = require('gulp-util');
 
 var isAbsolute = function(p) {
     var normal = path.normalize(p);
@@ -32,12 +33,17 @@ module.exports = function(options) {
     var root = options.root || '.';
 
     return through.obj(function(file, enc, cb) {
-        var css = rebaseUrls(file.contents.toString(), {
-            currentDir: path.dirname(file.path),
-            root: path.join(file.cwd, root)
-        });
+        try {
+            var css = rebaseUrls(file.contents.toString(), {
+                currentDir: path.dirname(file.path),
+                root: path.join(file.cwd, root)
+            });
 
-        file.contents = new Buffer(css);
+            file.contents = new Buffer(css);
+        } catch (err) {
+            cb(new gutil.PluginError('gulp-css-rebase-urls', err));
+            return;
+        }
 
         this.push(file);
         cb();
